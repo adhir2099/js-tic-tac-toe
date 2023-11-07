@@ -1,11 +1,13 @@
 const squares = document.querySelectorAll('.square');
 let currentPlayer = 'X';
+let moves = 0;
 
 function handleClick(e) {
     const square = e.target;
     square.textContent = currentPlayer;
     square.classList.add(currentPlayer);
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    moves++;
 }
 
 function checkForWinner() {
@@ -24,11 +26,17 @@ function checkForWinner() {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a].textContent && squares[a].textContent === squares[b].textContent && squares[b].textContent === squares[c].textContent) {
-        return squares[a].textContent;
+            showWinningAlert(squares[a].textContent + ' wins!');
+            squares.forEach(square => square.removeEventListener('click', handleClick));
+            return;
+        }
+        
+        if (moves === squares.length) {
+            showWinningAlert("It's a Tie!");
+            squares.forEach(square => square.removeEventListener('click', handleClick));
+            return;
         }
     }
-
-    return null;
 }
 
 function handleGameEnd(winner) {
@@ -51,18 +59,12 @@ const resetButton = document.getElementById('reset-button');
 resetButton.addEventListener('click', resetGame);
 
 function resetGame() {
-    //You can use a For loop to clean the board
-    // for (let i = 0; i < squares.length; i++) {
-    //   squares[i].textContent = '';
-    // }
-
     hideWinningAlert();
-
     location.reload();
 }
 
 function showWinningAlert(winner) {
-    var winningMessage = winner + ' wins!';
+    var winningMessage = winner;
     var alertElement = document.createElement('div');
     alertElement.innerHTML = winningMessage;
     alertElement.classList.add('winning-alert');
