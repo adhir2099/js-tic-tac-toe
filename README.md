@@ -2,6 +2,13 @@
 
 <h1 align="center"> 👋 VanillaJS Tic-tac-toe</h1>
 
+## Demo URL
+<p align="left">
+  <a href="https://3moondev.com/demos/tictactoe/">
+    <b>Visit demo here</b>
+  </a>
+</p>
+
 # Js Tic Tac Toe
 Super easy TIC-TAC-TOE game with Vanilla Js and CSS.
 
