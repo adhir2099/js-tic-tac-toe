@@ -4,7 +4,7 @@
 
 ## Demo URL
 <p align="left">
-  <a href="https://3moondev.com/demos/tictactoe/">
+  <a href="https://adhir2099.github.io/js-tic-tac-toe/">
     <b>Visit demo here</b>
   </a>
 </p>
